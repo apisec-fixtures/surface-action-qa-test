@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - id: surface
-        uses: apisec-inc/apisec-surface-github-action@main
+        uses: apisec-inc/apisec-surface-github-action@v1
         with:
           apisec-pat: ${{ secrets.APISEC_PAT }}
           api-url: https://api.qa.apisecapps.com
