@@ -1,0 +1,21 @@
+﻿name: APIsec Surface
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  surface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - id: surface
+        uses: apisec-inc/apisec-surface-github-action@main
+        with:
+          apisec-pat: ${{ secrets.APISEC_PAT }}
+          api-url: https://api.qa.apisecapps.com
+      - run: echo "app=${{ steps.surface.outputs.application-id }} routes=${{ steps.surface.outputs.endpoints-count }}"
